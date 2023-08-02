@@ -5,15 +5,7 @@ import { Card, CardTitle, CardHeader, CardDescription, CardFooter, CardContent }
 
 import { useAppDispatch } from '@/context/hooks';
 import { setCategory } from '@/context/reducers/categoryReducers';
-
-export interface LevelProps {
-	name: 'unknown' | 'B1' | 'B2' | 'C1';
-	exampleWords: [
-		'environment' | 'intuition' | 'coherence',
-		'diversity' | 'harmony' | 'stunning',
-		'imagination' | 'trust' | 'extravagant',
-	];
-}
+import { LevelProps } from '@/types/levelProps';
 
 function Level({ name, exampleWords }: LevelProps) {
 	const dispatch = useAppDispatch();
@@ -26,7 +18,7 @@ function Level({ name, exampleWords }: LevelProps) {
 		);
 	};
 	return (
-		<Card className="border-none bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-md shadow-slate-800 hover:from-slate-900 hover:to-slate-700 transition-all">
+		<Card className="border-2 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-md shadow-slate-800 hover:from-slate-900 hover:to-slate-700 hover:scale-105 transition-all duration-300">
 			<button className="text-left" onClick={handleChoose}>
 				<CardHeader>
 					<CardTitle>Level: {name}</CardTitle>
