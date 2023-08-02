@@ -9,7 +9,7 @@ import Flashcard from './Flashcard';
 function Flashcards() {
 	const [startLearning, setStartLearning] = useState(false);
 
-	const { words } = useAppSelector((state) => state);
+	const { words, flashcard } = useAppSelector((state) => state);
 
 	return (
 		<div className="text-white">
@@ -17,12 +17,14 @@ function Flashcards() {
 				<StartLearningCard setStartLearning={setStartLearning} />
 			) : (
 				<div>
-					<p>Person started learning</p>
-					{words.words.map((word, i) => (
-						<div key={i}>
-							<Flashcard word={word} />
-						</div>
-					))}
+					{words.words.map(
+						(word, idx) =>
+							idx === flashcard.index && (
+								<div key={idx} className="flex gap-1 my-1">
+									<Flashcard word={word} idx={idx} />
+								</div>
+							),
+					)}
 				</div>
 			)}
 		</div>

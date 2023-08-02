@@ -14,7 +14,7 @@ function StartLearningCard({
 }: {
 	setStartLearning: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-	const { category, words } = useAppSelector((state) => state);
+	const { category } = useAppSelector((state) => state);
 	const dispatch = useAppDispatch();
 
 	const handleReset = () => {
@@ -25,32 +25,39 @@ function StartLearningCard({
 		);
 	};
 
-	const handleSubmit = () => {
-		console.log(category.name);
+	const randomizeWords = (words: { english: string; polish: string }[]) => {
+		const copiedArray = [...words];
+		for (let i = copiedArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[copiedArray[i], copiedArray[j]] = [copiedArray[j], copiedArray[i]];
+		}
 
+		return copiedArray;
+	};
+
+	const handleSubmit = () => {
 		if (category.name === 'B1') {
 			dispatch(
 				setWords({
-					words: wordsB1,
+					words: randomizeWords(wordsB1),
 				}),
 			);
 		} else if (category.name === 'B2') {
 			dispatch(
 				setWords({
-					words: wordsB2,
+					words: randomizeWords(wordsB2),
 				}),
 			);
 		} else {
 			dispatch(
 				setWords({
-					words: wordsC1,
+					words: randomizeWords(wordsC1),
 				}),
 			);
 		}
 		setStartLearning(true);
-
-		console.log(words);
 	};
+
 	return (
 		<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
 			<Card className="max-w-sm shadow-md shadow-white bg-gray-900 text-white">

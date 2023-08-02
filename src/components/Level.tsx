@@ -26,7 +26,7 @@ function Level({ name, exampleWords, idx }: LevelProps) {
 						<span>Level: {name}</span>
 					</CardTitle>
 					<CardDescription className="text-white text-xl">
-						Exemplary words:
+						Illustrative words:
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="py-6">
