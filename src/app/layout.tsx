@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 import ReduxProvider from '@/context/ReduxProvider';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
 	title: 'Flashcards - Learning',
@@ -14,8 +15,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
-				<ReduxProvider>{children}</ReduxProvider>
+			<body className={`${inter.className} min-h-screen bg-slate-950`}>
+				<ReduxProvider>
+					<Header />
+					{children}
+				</ReduxProvider>
 			</body>
 		</html>
 	);

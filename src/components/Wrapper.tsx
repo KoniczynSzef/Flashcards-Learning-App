@@ -11,18 +11,18 @@ function Wrapper() {
 	const category = useAppSelector((state) => state.category);
 
 	return (
-		<div>
+		<div className="my-52">
 			{category.name !== 'unknown' ? (
 				<Flashcards />
 			) : (
-				<div className="flex gap-12 items-center">
-					{levels.map((level, i) => (
+				<div className="flex gap-16 items-center">
+					{levels.map((level, idx) => (
 						<motion.div
-							key={i}
+							key={idx}
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
-							transition={{ delay: 0.1 * i }}>
-							<Level name={level.name} exampleWords={level.exampleWords} />
+							transition={{ delay: 0.1 * idx }}>
+							<Level idx={idx} name={level.name} exampleWords={level.exampleWords} />
 						</motion.div>
 					))}
 				</div>

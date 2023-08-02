@@ -1,4 +1,5 @@
 export interface LevelProps {
+	idx: number;
 	name: 'unknown' | 'B1' | 'B2' | 'C1';
 	exampleWords: [
 		'environment' | 'intuition' | 'coherence',

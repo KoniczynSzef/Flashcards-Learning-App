@@ -7,7 +7,7 @@ import { useAppDispatch } from '@/context/hooks';
 import { setCategory } from '@/context/reducers/categoryReducers';
 import { LevelProps } from '@/types/levelProps';
 
-function Level({ name, exampleWords }: LevelProps) {
+function Level({ name, exampleWords, idx }: LevelProps) {
 	const dispatch = useAppDispatch();
 
 	const handleChoose = () => {
@@ -18,12 +18,15 @@ function Level({ name, exampleWords }: LevelProps) {
 		);
 	};
 	return (
-		<Card className="border-2 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-md shadow-slate-800 hover:from-slate-900 hover:to-slate-700 hover:scale-105 transition-all duration-300">
+		<Card
+			className={`h-64 w-72 border-2 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-md shadow-slate-800 hover:from-slate-900 hover:to-slate-700 hover:scale-105 transition-all duration-300`}>
 			<button className="text-left" onClick={handleChoose}>
-				<CardHeader>
-					<CardTitle>Level: {name}</CardTitle>
+				<CardHeader className="relative">
+					<CardTitle>
+						<span>Level: {name}</span>
+					</CardTitle>
 					<CardDescription className="text-white text-xl">
-						Examplary words:
+						Exemplary words:
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="py-6">
