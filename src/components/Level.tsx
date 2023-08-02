@@ -18,9 +18,9 @@ function Level({ name, exampleWords, idx }: LevelProps) {
 		);
 	};
 	return (
-		<Card
-			className={`h-64 w-72 border-2 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-md shadow-slate-800 hover:from-slate-900 hover:to-slate-700 hover:scale-105 transition-all duration-300`}>
-			<button className="text-left" onClick={handleChoose}>
+		<button className="text-left" onClick={handleChoose}>
+			<Card
+				className={`h-64 w-72 border-2 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-md shadow-slate-800 hover:from-slate-900 hover:to-slate-700 hover:scale-105 transition-all duration-300`}>
 				<CardHeader className="relative">
 					<CardTitle>
 						<span>Level: {name}</span>
@@ -39,8 +39,8 @@ function Level({ name, exampleWords, idx }: LevelProps) {
 						))}
 					</ul>
 				</CardContent>
-			</button>
-		</Card>
+			</Card>
+		</button>
 	);
 }
 

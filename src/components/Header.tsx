@@ -3,8 +3,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { useAppSelector, useAppDispatch } from '@/context/hooks';
+import { useAppDispatch } from '@/context/hooks';
 import { setCategory } from '@/context/reducers/categoryReducers';
+import { setWords } from '@/context/reducers/wordsReducers';
+import { setStats } from '@/context/reducers/statsReducers';
 
 function Header() {
 	const dispatch = useAppDispatch();
@@ -13,6 +15,19 @@ function Header() {
 		dispatch(
 			setCategory({
 				name: 'unknown',
+			}),
+		);
+
+		dispatch(
+			setWords({
+				words: [],
+			}),
+		);
+
+		dispatch(
+			setStats({
+				hints: 0,
+				mistakes: 0,
 			}),
 		);
 	};

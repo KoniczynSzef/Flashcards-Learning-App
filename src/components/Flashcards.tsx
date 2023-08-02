@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useAppSelector } from '@/context/hooks';
 import StartLearningCard from './StartLearningCard';
 import Flashcard from './Flashcard';
+import Summary from './Summary';
 
 function Flashcards() {
 	const [startLearning, setStartLearning] = useState(false);
@@ -15,7 +16,7 @@ function Flashcards() {
 		<div className="text-white">
 			{!startLearning ? (
 				<StartLearningCard setStartLearning={setStartLearning} />
-			) : (
+			) : flashcard.index !== 20 ? (
 				<div>
 					{words.words.map(
 						(word, idx) =>
@@ -26,6 +27,8 @@ function Flashcards() {
 							),
 					)}
 				</div>
+			) : (
+				<Summary />
 			)}
 		</div>
 	);

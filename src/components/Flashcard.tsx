@@ -7,8 +7,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from './ui/button';
 import { setCurrentFlashcard } from '@/context/reducers/flashcardReducers';
 import { Input } from './ui/input';
-import { motion } from 'framer-motion';
-import { wordsB1, wordsB2, wordsC1 } from '@/assets/words';
+import { motion, AnimatePresence } from 'framer-motion';
+import { setStats } from '@/context/reducers/statsReducers';
 
 interface FlashcardProps {
 	word: {
@@ -20,13 +20,29 @@ interface FlashcardProps {
 
 function Flashcard({ word, idx }: FlashcardProps) {
 	const [mistake, setMistake] = useState(false);
-	const [guessed, setGuessed] = useState(false);
+	const [hint, setHint] = useState(false);
 
 	const [input, setInput] = useState('');
 
 	const dispatch = useAppDispatch();
-	const { category, words } = useAppSelector((state) => state);
+	const { words } = useAppSelector((state) => state);
 	const { index } = useAppSelector((state) => state.flashcard);
+	const { hints, mistakes } = useAppSelector((state) => state.stats);
+
+	const handleHint = () => {
+		if (!hint) {
+			dispatch(
+				setStats({
+					mistakes: mistakes,
+					hints: hints + 1,
+				}),
+			);
+
+			console.log(hints);
+		}
+
+		setHint((prev) => !prev);
+	};
 
 	const handleNext = (e: React.FormEvent<HTMLDivElement>) => {
 		e.preventDefault();
@@ -35,7 +51,7 @@ function Flashcard({ word, idx }: FlashcardProps) {
 		if (word.english === input) {
 			dispatch(
 				setCurrentFlashcard({
-					index: index !== 19 ? index + 1 : 0,
+					index: index + 1,
 				}),
 			);
 		} else {
@@ -56,13 +72,30 @@ function Flashcard({ word, idx }: FlashcardProps) {
 					<p className="font-bold">{index + 1} / 20</p>
 				</CardHeader>
 
-				{mistake && (
-					<CardContent>
+				<CardContent className="flex flex-col gap-4">
+					<Button className="capitalize text-xl ml-auto" onClick={handleHint}>
+						🔦
+					</Button>
+					{mistake && (
 						<CardDescription className="text-red-600 text-xl">
 							Uuuhh! Try again!
 						</CardDescription>
-					</CardContent>
-				)}
+					)}
+
+					<AnimatePresence>
+						{hint && (
+							<CardDescription key={'hint'} className="text-xl">
+								<motion.div
+									initial={{ scaleY: 0 }}
+									animate={{ scaleY: 1 }}
+									exit={{ scaleY: 0 }}
+									className="bg-gray-800 text-white origin-top p-4 rounded-md">
+									{word.english.slice(0, 3)}...
+								</motion.div>
+							</CardDescription>
+						)}
+					</AnimatePresence>
+				</CardContent>
 
 				<CardFooter onSubmit={handleNext}>
 					<form className="flex my-auto gap-4">
@@ -73,7 +106,7 @@ function Flashcard({ word, idx }: FlashcardProps) {
 							value={input}
 							onChange={(e) => setInput(e.target.value)}
 						/>
-						<Button type="submit" className="text-lg px-6">
+						<Button type="submit" className="text-base">
 							Check
 						</Button>
 					</form>

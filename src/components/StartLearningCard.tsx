@@ -77,7 +77,8 @@ function StartLearningCard({
 				<CardFooter className="flex justify-between">
 					<Button
 						onClick={handleReset}
-						className="bg-slate-200 text-black hover:bg-white transition">
+						className="bg-transparent text-white hover:bg-slate-950 hover:text-white transition duration-300"
+						variant={'outline'}>
 						Go Back
 					</Button>
 					<Button
