@@ -10,7 +10,7 @@
 > - Framer Motion
 
 #### Install Flashcards on your machine: (list of steps)
-- Type ``git clone https://github.com/KoniczynSzef/Flashcards-Learning-App.git`` to clone my repository
+- Type ``git clone https://github.com/KoniczynSzef/Flashcards-Learning-App.git .`` to clone my repository inside your current directory
 - Run ``npm install`` for installing all necessary dependencies and packages
 - Run ``npm run dev`` script for running an application in development mode
 - Go to [localhost:3000](http://localhost:3000/) and see the project
