@@ -16,6 +16,7 @@ export const handleReset = (
 		AnyAction
 	>,
 	resetCategory: boolean,
+	words: [] | { english: string; polish: string }[],
 ) => {
 	if (resetCategory) {
 		dispatch(
@@ -23,13 +24,13 @@ export const handleReset = (
 				name: 'unknown',
 			}),
 		);
-
-		dispatch(
-			setWords({
-				words: [],
-			}),
-		);
 	}
+
+	dispatch(
+		setWords({
+			words: words,
+		}),
+	);
 
 	dispatch(
 		setStats({

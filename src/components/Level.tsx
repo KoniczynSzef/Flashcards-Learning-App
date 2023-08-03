@@ -20,7 +20,7 @@ function Level({ name, exampleWords, idx }: LevelProps) {
 	return (
 		<button className="text-left" onClick={handleChoose}>
 			<Card
-				className={`h-64 w-72 border-2 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-md shadow-slate-800 hover:from-slate-900 hover:to-slate-700 hover:scale-105 transition-all duration-300`}>
+				className={`h-64 w-72 border border-slate-800 bg-slate-950 text-white shadow-md shadow-slate-800 hover:bg-slate-900 hover:scale-105 transition-all duration-300`}>
 				<CardHeader className="relative">
 					<CardTitle>
 						<span>Level: {name}</span>

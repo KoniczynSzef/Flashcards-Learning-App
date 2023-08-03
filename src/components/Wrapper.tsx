@@ -15,7 +15,7 @@ function Wrapper() {
 			{category.name !== 'unknown' ? (
 				<Flashcards />
 			) : (
-				<div className="flex gap-16 items-center">
+				<div className="flex flex-col md:flex-row gap-16 items-center">
 					{levels.map((level, idx) => (
 						<motion.div
 							key={idx}

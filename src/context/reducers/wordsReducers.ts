@@ -1,3 +1,4 @@
+import { randomizeWords } from '@/helpers/randomizeWords';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface WordList {
@@ -11,7 +12,7 @@ const wordsSlice = createSlice({
 	name: 'words',
 	reducers: {
 		setWords: (state, action: PayloadAction<WordList>) => {
-			state.words = action.payload.words;
+			state.words = randomizeWords(action.payload.words);
 		},
 	},
 });
