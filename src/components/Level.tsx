@@ -7,7 +7,7 @@ import { useAppDispatch } from '@/context/hooks';
 import { setCategory } from '@/context/reducers/categoryReducers';
 import { LevelProps } from '@/types/levelProps';
 
-function Level({ name, exampleWords, idx }: LevelProps) {
+function Level({ name, exampleWords }: LevelProps) {
 	const dispatch = useAppDispatch();
 
 	const handleChoose = () => {

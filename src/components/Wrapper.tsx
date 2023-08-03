@@ -22,7 +22,7 @@ function Wrapper() {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							transition={{ delay: 0.1 * idx }}>
-							<Level idx={idx} name={level.name} exampleWords={level.exampleWords} />
+							<Level name={level.name} exampleWords={level.exampleWords} />
 						</motion.div>
 					))}
 				</div>
