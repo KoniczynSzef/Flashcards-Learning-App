@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface WordList {
+export interface WordList {
 	words: { polish: string; english: string }[];
 }
 

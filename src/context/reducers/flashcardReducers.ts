@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface FlashcardProps {
+export interface FlashcardProps {
 	index: number;
 }
 

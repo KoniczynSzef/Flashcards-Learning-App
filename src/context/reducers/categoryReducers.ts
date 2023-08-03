@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Category {
+export interface Category {
 	name: 'unknown' | 'B1' | 'B2' | 'C1';
 }
 

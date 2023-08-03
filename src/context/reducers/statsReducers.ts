@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface statsProps {
+export interface statsProps {
 	mistakes: number;
 	hints: number;
 }
