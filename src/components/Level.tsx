@@ -32,10 +32,10 @@ function Level({ name, exampleWords }: LevelProps) {
 				<CardContent className="py-6">
 					<ul>
 						{exampleWords.map((word, i) => (
-							<div key={i} className="flex items-center gap-2">
+							<li key={i} className="flex items-center gap-2">
 								<div className="h-2 w-2 bg-slate-300 rounded-full" />
 								<p className="text-lg">{word}</p>
-							</div>
+							</li>
 						))}
 					</ul>
 				</CardContent>
